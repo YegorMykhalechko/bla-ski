@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+}
+
+.p-menubar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #dee2e6;
+}
