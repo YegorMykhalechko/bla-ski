@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import {useRouter} from 'vue-router'
-const username = ref('test');
-const password = ref('');
+import { useRouter } from "vue-router";
+import { useLoginStore } from "@/stores/login";
 const router = useRouter();
+const store = useLoginStore();
 
-const auth = ()=> {
-  localStorage.setItem('user', '1')
-  router.push({name: 'createEvent'})
-}
+const auth = () => {
+  store.$patch({ isLogin: true });
+  router.push({ name: "createEvent" });
+};
 </script>
 
 <template>

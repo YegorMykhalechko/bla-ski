@@ -4,6 +4,7 @@ import HomeView from "../views/HomeView.vue"
 import LoginView from "../views/LoginView.vue"
 import NotFoundView from "../views/NotFoundView.vue"
 import CreateEventView from "../views/createEventView.vue"
+import { useLoginStore } from '@/stores/login'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,8 +41,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  const user = localStorage.getItem('user')
-  if(to.meta.requiresAuth && !user){
+  const store = useLoginStore();
+  if(to.meta.requiresAuth && !store.isLogin){
     return {name: 'login'}
   }
 })

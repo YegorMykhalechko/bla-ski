@@ -2,8 +2,9 @@
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
+import { useLoginStore } from "@/stores/login";
 const router = useRouter();
-const user = localStorage.getItem('user')
+const store = useLoginStore();
 const items = ref([
   {
     label: "Events",
@@ -13,14 +14,14 @@ const items = ref([
   {
     label: "Login",
     to: "/login",
-    visible: () => !user
+    visible: () => !store.isLogin,
   },
   {
     label: "Quit",
     icon: "pi pi-fw pi-power-off",
-    visible: () => user,
+    visible: () => store.isLogin,
     command: () => {
-      localStorage.clear();
+      store.$patch({ isLogin: false });
       router.push({ name: "home" });
     },
   },
