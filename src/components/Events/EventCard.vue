@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps(['data'])
+</script>
 
 <template>
   <div class="col-12 md:col-5 lg:col-3 p-3">
@@ -9,14 +11,14 @@
           src="https://www.primefaces.org/wp-content/uploads/2020/02/primefacesorg-primevue-2020.png"
         />
       </template>
-      <template #title>Resort</template>
+      <template #title>{{data.resort}}</template>
       <template #subtitle>
-        <div>Date Time</div>
-        <div>Price</div>
-        <div>Slots(1/4)</div>
+        <div>{{data.price}}</div>
       </template>
       <template #content>
-        <p>Description</p>
+        <div>{{data.date}}</div>
+        <div>{{data.book_slots}}/{{data.slots}}</div>
+        <p>{{data.description}}</p>
       </template>
       <template #footer>
         <Button icon="pi pi-check" label="Book" />

@@ -1,9 +1,22 @@
 <script setup lang="ts">
-import EventCard from "../components/Events/EventCard.vue";</script>
+import { ref } from "vue";
+import EventCard from "../components/Events/EventCard.vue";
+const events = ref([
+  {
+    id: 1,
+    resort: "Zieleniec Sport Arena Ośrodek narciarski",
+    slots: 4,
+    book_slots: 2,
+    date: new Date(),
+    price: 100,
+    description: "",
+  },
+]);
+</script>
 
 <template>
-  <div class="grid grid-nogutter">
-    <EventCard />
+  <div v-for="(event, index) in events" class="grid grid-nogutter">
+    <EventCard :key="event.id" :data="event"/>
   </div>
 </template>
 
